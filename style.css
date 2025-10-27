@@ -1,0 +1,505 @@
+/* ===== CORE / VARS ===== */
+:root {
+  --bg-page: #faf7f2;
+  --bg-surface: #ffffff;
+  --text: #2a2a2a;
+  --muted: #6b6b6b;
+  --border: #eae1d3;
+
+  --brand-prim: #4a2c2a;
+  --brand-sec: #d9a441;
+  --brand-sec-hover: #b88423;
+
+  --radius: 14px;
+  --shadow-sm: 0 3px 10px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+  /* Adicionado para o header */
+  --header-height: 76px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: var(--bg-page);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+a {
+  color: var(--brand-sec);
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.section-padding {
+  padding: 80px 0;
+}
+.section-title {
+  text-align: center;
+  /* Tipografia responsiva */
+  font-size: clamp(1.8rem, 5vw, 2.4rem);
+  color: var(--brand-prim);
+  margin-bottom: 50px;
+  letter-spacing: 0.3px;
+}
+
+/* ===== HEADER ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+.logo img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+}
+.logo span {
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1.1;
+  font-size: 1rem;
+}
+.logo:hover {
+  color: var(--brand-sec);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 28px;
+}
+.nav-menu a {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  position: relative;
+  padding: 10px 0;
+  transition: color 0.2s ease;
+}
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--brand-sec);
+  transition: width 0.25s ease;
+}
+.nav-menu a:hover {
+  color: var(--brand-prim);
+}
+.nav-menu a:hover::after {
+  width: 100%;
+}
+
+.menu-mobile-botao {
+  display: none; /* Escondido no desktop */
+  border: 1px solid var(--brand-prim);
+  background: transparent;
+  color: var(--brand-prim);
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===== HERO SLIDER (NOVO) ===== */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  min-height: 450px;
+  overflow: hidden;
+  color: #fff;
+}
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  /* O JS vai controlar a transição aqui */
+  transition: transform 0.7s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.slide {
+  flex-shrink: 0; /* Impede que os slides encolham */
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+/* Overlay escuro para melhor leitura */
+.slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(16, 9, 8, 0.6), rgba(16, 9, 8, 0.6));
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  /* Tipografia responsiva */
+  font-size: clamp(2.5rem, 8vw, 3.6rem);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.hero-content h2 {
+  font-size: clamp(1.1rem, 4vw, 1.35rem);
+  font-weight: 300;
+  margin-bottom: 28px;
+}
+.cta-button {
+  display: inline-block;
+  background: var(--brand-sec);
+  color: #1d1d1d;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+}
+.cta-button:hover {
+  background: var(--brand-sec-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Bolinhas de navegação do Slider */
+.slider-dots {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 5;
+}
+.slider-dots .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.slider-dots .dot.ativo {
+  background: var(--brand-sec);
+  border-color: var(--brand-sec);
+}
+
+/* ===== SOBRE ===== */
+#sobre {
+  background: transparent;
+}
+.sobre-flex {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+.sobre-imagem-destaque img {
+  width: 100%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.sobre-texto p {
+  margin-bottom: 18px;
+  font-size: 1.06rem;
+  color: var(--text);
+}
+.botoes-sobre {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+}
+.btn-outline,
+.btn-solid {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+.btn-outline {
+  border-color: var(--brand-sec);
+  color: var(--brand-prim);
+}
+.btn-outline:hover {
+  background: var(--brand-sec);
+  color: #1d1d1d;
+}
+.btn-solid {
+  background: var(--brand-prim);
+  color: #fff;
+}
+.btn-solid:hover {
+  background: #3c2321;
+}
+
+/* ===== DESTAQUES / EVENTOS ===== */
+.section-destaques {
+  background: var(--bg-surface);
+}
+.manutencao {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  max-width: 720px;
+  margin: 0 auto;
+}
+.manutencao h3 {
+  color: var(--brand-prim);
+  font-size: 1.4rem;
+  margin: 6px 0 8px;
+}
+.manutencao p {
+  color: var(--muted);
+}
+.badge {
+  display: inline-block;
+  background: var(--brand-sec);
+  color: #1d1d1d;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--brand-prim);
+  color: #e9e2db;
+  padding-top: 60px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 36px;
+}
+.footer-coluna h3 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--brand-sec);
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+.footer-coluna p {
+  margin-bottom: 8px;
+}
+.footer-coluna a {
+  color: #e9e2db;
+  transition: color 0.2s ease;
+}
+.footer-coluna a:hover {
+  color: var(--brand-sec);
+}
+
+/* ATUALIZADO: Alinha o ícone e o texto */
+.link-telefone {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+/* NOVO: Estilo para os ícones do rodapé */
+.footer-icon {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+.btn-outline.small {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid var(--brand-sec);
+  color: #fff;
+  font-weight: 700;
+}
+.btn-outline.small:hover {
+  background: var(--brand-sec);
+  color: #1d1d1d;
+}
+
+.mapa-wrapper iframe {
+  border-radius: 12px;
+  border: 3px solid rgba(255, 255, 255, 0.12);
+}
+.footer-bottom {
+  text-align: center;
+  padding: 22px;
+  margin-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  font-size: 0.95rem;
+}
+
+/* ===== WHATSAPP FLOAT (AJUSTADO PARA SVG) ===== */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  /* CORRIGIDO: Removido o background duplicado */
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+  animation: pulse 2s infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.whatsapp-float svg {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  /* CORRIGIDO: Cor do ícone (que agora é o ícone completo) */
+  fill: #25d366;
+}
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.42);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 1024px) {
+  .sobre-flex {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===== MENU MOBILE (CSS ADICIONADO) ===== */
+@media (max-width: 800px) {
+  .menu-mobile-botao {
+    display: block; /* Mostra o botão 'Menu' */
+    z-index: 1100; /* Garante que fique acima do menu */
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%; /* Não ocupa a tela inteira */
+    max-width: 320px;
+    height: 100vh; /* Altura total da tela */
+    background: var(--bg-surface);
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+
+    /* Posição inicial (escondido) */
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.77, 0, 0.175, 1);
+
+    /* Muda a direção dos links */
+    flex-direction: column;
+    padding: 100px 30px 30px 30px;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* Estado ATIVO (quando o botão é clicado) */
+  .nav-menu.ativo {
+    transform: translateX(0); /* Puxa o menu para a tela */
+  }
+
+  .nav-menu a {
+    font-size: 1.25rem;
+    padding: 12px 0;
+    width: 100%;
+  }
+  .nav-menu a:hover::after {
+    width: 50%; /* Destaque menor no mobile */
+  }
+
+  /* Ajusta o botão 'Menu' para 'Fechar' */
+  .menu-mobile-botao.ativo {
+    content: "Fechar"; /* O JS troca o aria-label, aqui trocamos o texto */
+    color: var(--brand-prim);
+    border-color: transparent;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr; /* Coluna única no mobile */
+  }
+}
