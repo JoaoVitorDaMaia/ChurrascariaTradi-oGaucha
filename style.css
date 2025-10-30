@@ -259,6 +259,8 @@ header .container {
 }
 .sobre-texto p {
   margin-bottom: 18px;
+  margin-left: 10px;
+  margin-right: 10px;
   font-size: 1.06rem;
   color: var(--text);
 }
@@ -292,10 +294,48 @@ header .container {
   background: #3c2321;
 }
 
-/* ===== DESTAQUES / EVENTOS ===== */
-.section-destaques {
-  background: var(--bg-surface);
+/* ===== NOVA SEÇÃO: DESTAQUES RODÍZIO ===== */
+#destaques-rodizio {
+  background: var(--bg-surface); /* Fundo branco para contrastar */
 }
+.destaques-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+.destaque-item {
+  background: var(--bg-page); /* Fundo bege claro no card */
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden; /* Garante que a imagem obedeça o border-radius */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.destaque-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+.destaque-item img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+.destaque-conteudo {
+  padding: 24px;
+}
+.destaque-conteudo h3 {
+  color: var(--brand-prim);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+.destaque-conteudo p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ===== PÁGINA EVENTOS (MANUTENÇÃO) ===== */
+/* (Estilo movido de .section-destaques para ser mais específico) */
 .manutencao {
   background: #fff;
   border: 1px solid var(--border);
@@ -448,6 +488,10 @@ footer {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+  /* Ajusta o grid de destaques para 2 colunas */
+  .destaques-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* ===== MENU MOBILE (CSS ADICIONADO) ===== */
@@ -501,5 +545,10 @@ footer {
 
   .footer-grid {
     grid-template-columns: 1fr; /* Coluna única no mobile */
+  }
+
+  /* Ajusta o grid de destaques para 1 coluna */
+  .destaques-grid {
+    grid-template-columns: 1fr;
   }
 }
