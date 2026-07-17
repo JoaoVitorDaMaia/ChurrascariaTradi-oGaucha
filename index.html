@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Churrascaria Tradição Gaúcha - Palhoça</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@400;700&family=Karla:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
+    <header id="header">
       <nav class="container">
         <a href="index.html" class="logo" aria-label="Página inicial">
           <img
@@ -23,14 +25,13 @@
           <span>Churrascaria<br />Tradição Gaúcha</span>
         </a>
 
-        <ul class="nav-menu" id="nav-menu" role="menubar">
-          <li role="none">
-            <a role="menuitem" href="index.html">A Churrascaria</a>
-          </li>
-          <li role="none">
-            <a role="menuitem" href="eventos.html">Eventos</a>
-          </li>
-          <li role="none"><a role="menuitem" href="#contato">Contato</a></li>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#sobre">A Churrascaria</a></li>
+          <li><a href="#destaques-rodizio">Rodízio</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#contato">Contato</a></li>
         </ul>
 
         <button
@@ -38,91 +39,140 @@
           id="menu-mobile-botao"
           aria-label="Abrir menu"
           aria-haspopup="true"
+          aria-expanded="false"
           aria-controls="nav-menu"
         >
-          Menu
+          <span class="hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </button>
       </nav>
     </header>
+    <div class="menu-scrim" id="menu-scrim" aria-hidden="true"></div>
 
     <main>
-      <section class="hero-slider" aria-label="Destaques">
-        <div class="slider-wrapper">
+      <!-- HERO — carrossel crossfade + parallax multicamadas ao rolar -->
+      <section class="hero" aria-label="Destaques">
+        <div class="hero-slides" data-hero-layer="fundo" aria-hidden="true">
           <div
-            class="slide"
+            class="hero-slide is-active"
             style="background-image: url('images/churras.webp')"
-          >
-            <div class="hero-content container">
-              <h1>O Verdadeiro Sabor</h1>
-              <h2>Do Churrasco Gaúcho</h2>
-              <a
-                href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
-                class="cta-button"
-                target="_blank"
-                rel="noopener"
-                >Faça sua Reserva</a
-              >
-            </div>
-          </div>
+          ></div>
           <div
-            class="slide"
-            style="background-image: url('images/ambiente.webp')"
-          >
-            <div class="hero-content container">
-              <h1>Ambiente Aconchegante</h1>
-              <h2>Perfeito para sua família</h2>
-              <a
-                href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
-                class="cta-button"
-                target="_blank"
-                rel="noopener"
-                >Faça sua Reserva</a
-              >
-            </div>
-          </div>
+            class="hero-slide"
+            style="background-image: url('images/espeto.webp')"
+          ></div>
           <div
-            class="slide"
-            style="background-image: url('images/picanha.webp')"
-          >
-            <div class="hero-content container">
-              <h1>Cortes Nobres</h1>
-              <h2>Qualidade incomparável</h2>
-              <a
-                href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
-                class="cta-button"
-                target="_blank"
-                rel="noopener"
-                >Faça sua Reserva</a
-              >
-            </div>
-          </div>
+            class="hero-slide"
+            style="background-image: url('images/buffet.jpg')"
+          ></div>
         </div>
-        <div class="slider-dots"></div>
+
+        <div class="hero-content container" data-hero-layer="frente">
+          <p class="hero-kicker">Rodízio tradicional gaúcho &mdash; Palhoça, SC</p>
+          <h1>O Verdadeiro Sabor<br />do Churrasco Gaúcho</h1>
+          <p class="hero-sub">
+            Cortes nobres, buffet completo e ambiente para toda a família.
+          </p>
+          <a
+            href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
+            class="cta-button"
+            target="_blank"
+            rel="noopener"
+          >
+            <svg
+              class="cta-icon"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+              fill="currentColor"
+            >
+              <path
+                d="M224 32C100.3 32 0 132.3 0 256c0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c123.7 0 224.1-100.3 224.1-224.1C448 132.3 347.7 32 224 32zm71.1 330.3c-3.1-1.5-18.4-9.1-21.3-10.2-2.9-1.1-5-1.5-7.1 1.5-2.1 3-8.1 10.2-9.9 12.3-1.9 2.1-3.7 2.3-6.9 .8-3.2-1.5-13.5-5-25.7-15.9-9.5-8.4-15.9-18.7-17.8-22.1-1.9-3.4-.2-5.2 1.3-6.7 1.4-1.4 3.1-3.7 4.6-5.5 1.5-1.9 2.1-3.1 3.1-5.2 1-2.1.5-4.2-.3-5.7s-7.1-17.1-9.7-23.4c-2.6-6.3-5.2-5.4-7.1-5.5-1.9-.1-4.2-.1-6.4-.1-2.2 0-5.7 .8-8.7 4.2-3.1 3.4-11.7 11.4-11.7 27.9 0 16.5 12 32.3 13.7 34.4 1.7 2.1 23.4 35.6 56.8 50.1 8.3 3.7 14.7 5.8 19.8 7.5 8.8 2.8 16.7 2.4 23 1.5 6.9-1 21.2-8.7 24.2-17.1 3-8.4 3-15.6 2.1-17.1-.9-1.5-3-2.3-6.1-3.8z"
+              />
+            </svg>
+            Reservar pelo WhatsApp
+          </a>
+        </div>
+
+        <div
+          class="slider-dots"
+          id="hero-dots"
+          role="group"
+          aria-label="Escolher imagem de destaque"
+        ></div>
       </section>
 
-      <section id="sobre" class="container section-padding">
-        <h2 class="section-title">A Churrascaria</h2>
-        <div class="sobre-flex">
-          <div class="sobre-imagem-destaque">
-            <img
-              src="images/Churrascaria.png"
-              alt="Ambiente da Churrascaria Tradição Gaúcha"
-            />
-          </div>
-          <div class="sobre-texto">
-            <p>
-              Fundada com a paixão pelo autêntico churrasco gaúcho, a
-              <strong>Churrascaria Tradição Gaúcha</strong> traz para Palhoça o
-              verdadeiro sabor da pampa.
-            </p>
-            <p>
-              Excelência no atendimento e qualidade superior de nossas carnes.
-              Nosso rodízio conta com cortes nobres e um buffet completo para
-              satisfazer toda a família. Espaço amplo para até 200 pessoas.
-            </p>
-            <div class="botoes-sobre">
-              <a class="btn-outline" href="eventos.html">Ver Eventos</a>
-              <a class="btn-solid" href="#contato">Como Chegar</a>
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>Picanha</span><i>&#9670;</i>
+          <span>Costela</span><i>&#9670;</i>
+          <span>Alcatra</span><i>&#9670;</i>
+          <span>Cordeiro</span><i>&#9670;</i>
+          <span>Buffet Completo</span><i>&#9670;</i>
+          <span>Comida Japonesa</span><i>&#9670;</i>
+          <span>Frutos do Mar</span><i>&#9670;</i>
+          <span>Sobremesas</span><i>&#9670;</i>
+          <span>Picanha</span><i>&#9670;</i>
+          <span>Costela</span><i>&#9670;</i>
+          <span>Alcatra</span><i>&#9670;</i>
+          <span>Cordeiro</span><i>&#9670;</i>
+          <span>Buffet Completo</span><i>&#9670;</i>
+          <span>Comida Japonesa</span><i>&#9670;</i>
+          <span>Frutos do Mar</span><i>&#9670;</i>
+          <span>Sobremesas</span><i>&#9670;</i>
+        </div>
+      </div>
+
+      <section id="sobre" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">A Churrascaria</h2>
+          <div class="sobre-flex">
+            <div class="sobre-imagem-destaque">
+              <img
+                src="images/Churrascaria.png"
+                alt="Ambiente da Churrascaria Tradição Gaúcha"
+              />
+            </div>
+            <div class="sobre-texto">
+              <p>
+                Fundada com a paixão pelo autêntico churrasco gaúcho, a
+                <strong>Churrascaria Tradição Gaúcha</strong> traz para Palhoça o
+                verdadeiro sabor da pampa.
+              </p>
+              <p>
+                Excelência no atendimento e qualidade superior de nossas carnes.
+                Nosso rodízio conta com cortes nobres e um buffet completo para
+                satisfazer toda a família. Espaço amplo para até 200 pessoas.
+              </p>
+
+              <div class="stats-row">
+                <div class="stat">
+                  <span class="stat-num"
+                    ><span class="stat-count" data-count="20">20</span
+                    ><span class="stat-suffix">+</span></span
+                  >
+                  <p>Cortes nobres</p>
+                </div>
+                <div class="stat">
+                  <span class="stat-num"
+                    ><span class="stat-count" data-count="200">200</span></span
+                  >
+                  <p>Lugares</p>
+                </div>
+                <div class="stat">
+                  <span class="stat-num"
+                    ><span class="stat-count" data-count="7">7</span></span
+                  >
+                  <p>Dias por semana</p>
+                </div>
+              </div>
+
+              <div class="botoes-sobre">
+                <a class="btn-solid" href="#contato">Como Chegar</a>
+              </div>
             </div>
           </div>
         </div>
@@ -133,10 +183,12 @@
           <h2 class="section-title">Nosso Rodízio</h2>
           <div class="destaques-grid">
             <div class="destaque-item">
-              <img
-                src="images/espeto.webp"
-                alt="Espeto corrido com cortes nobres"
-              />
+              <div class="destaque-media">
+                <img
+                  src="images/espeto.webp"
+                  alt="Espeto corrido com cortes nobres"
+                />
+              </div>
               <div class="destaque-conteudo">
                 <h3>Espeto Corrido</h3>
                 <p>
@@ -148,10 +200,12 @@
             </div>
 
             <div class="destaque-item">
-              <img
-                src="images/buffet.jpg"
-                alt="Buffet de saladas e pratos quentes"
-              />
+              <div class="destaque-media">
+                <img
+                  src="images/buffet.jpg"
+                  alt="Buffet de saladas e pratos quentes"
+                />
+              </div>
               <div class="destaque-conteudo">
                 <h3>Buffet Completo</h3>
                 <p>
@@ -163,7 +217,9 @@
             </div>
 
             <div class="destaque-item">
-              <img src="images/sobremesa.jpg" alt="Sobremesas variadas" />
+              <div class="destaque-media">
+                <img src="images/sobremesa.jpg" alt="Sobremesas variadas" />
+              </div>
               <div class="destaque-conteudo">
                 <h3>Sobremesas</h3>
                 <p>
@@ -171,6 +227,197 @@
                   sobremesas inclui delícias caseiras, tortas, mousses e frutas
                   da estação.
                 </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VALORES -->
+      <section id="valores" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Valores</h2>
+          <p class="section-sub">
+            Rodízio completo: espeto corrido + buffet à vontade
+          </p>
+
+          <div class="valores-grid">
+            <div class="valor-card">
+              <h3 class="valor-nome">Crianças<span>6 a 10 anos</span></h3>
+              <p class="valor-preco">
+                <sup>R$</sup>44<small>,90</small>
+              </p>
+              <ul class="valor-lista">
+                <li>Meio rodízio à vontade</li>
+                <li>Buffet completo incluso</li>
+                <li>Bebidas à parte</li>
+              </ul>
+            </div>
+
+            <div class="valor-card em-destaque">
+              <span class="valor-badge">Rodízio Completo</span>
+              <h3 class="valor-nome">Adultos<span>por pessoa</span></h3>
+              <p class="valor-preco">
+                <sup>R$</sup>89<small>,90</small>
+              </p>
+              <ul class="valor-lista">
+                <li>Espeto corrido — 20+ cortes nobres</li>
+                <li>Buffet completo à vontade</li>
+                <li>Comida japonesa e frutos do mar</li>
+                <li>Bebidas e sobremesas à parte</li>
+              </ul>
+              <a
+                class="btn-solid"
+                href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20fazer%20uma%20reserva."
+                target="_blank"
+                rel="noopener"
+                >Reservar Mesa</a
+              >
+            </div>
+
+            <div class="valor-card">
+              <h3 class="valor-nome">Crianças<span>até 5 anos</span></h3>
+              <p class="valor-preco gratis">Cortesia</p>
+              <ul class="valor-lista">
+                <li>Não pagam rodízio</li>
+                <li>Acompanhadas dos pais</li>
+                <li>Bebidas à parte</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="valores-nota">
+            * Valores de referência — confirme os preços atualizados pelo
+            <a
+              href="https://wa.me/5548988632109"
+              target="_blank"
+              rel="noopener"
+              >WhatsApp (48) 98863-2109</a
+            >.
+          </p>
+        </div>
+      </section>
+
+      <!-- EVENTOS — galeria 3D circular -->
+      <section id="eventos" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Eventos</h2>
+          <p class="section-sub">
+            Espaço amplo para até 200 pessoas — perfeito para comemorar
+          </p>
+        </div>
+
+        <div class="galeria-3d" aria-label="Tipos de eventos que recebemos">
+          <div class="galeria-anel" id="galeria-anel">
+            <figure class="galeria-item" style="--i: 0">
+              <img src="images/buffet.jpg" alt="Buffet para aniversários" />
+              <figcaption>Aniversários</figcaption>
+            </figure>
+            <figure class="galeria-item" style="--i: 1">
+              <img
+                src="images/churras.webp"
+                alt="Churrasco para confraternizações"
+              />
+              <figcaption>Confraternizações</figcaption>
+            </figure>
+            <figure class="galeria-item" style="--i: 2">
+              <img
+                src="images/espeto.webp"
+                alt="Espeto corrido em eventos corporativos"
+              />
+              <figcaption>Eventos Corporativos</figcaption>
+            </figure>
+            <figure class="galeria-item" style="--i: 3">
+              <img
+                src="images/Churrascaria.png"
+                alt="Fachada da churrascaria"
+              />
+              <figcaption>Nosso Espaço</figcaption>
+            </figure>
+            <figure class="galeria-item" style="--i: 4">
+              <img
+                src="images/sobremesa.jpg"
+                alt="Mesa de sobremesas para celebrações"
+              />
+              <figcaption>Celebrações em Família</figcaption>
+            </figure>
+            <figure class="galeria-item" style="--i: 5">
+              <img src="images/buffet.jpg" alt="Buffet para grupos grandes" />
+              <figcaption>Grupos e Excursões</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="container eventos-cta">
+          <a
+            class="cta-button"
+            href="https://wa.me/5548988632109?text=Olá!%20Gostaria%20de%20planejar%20um%20evento%20na%20churrascaria."
+            target="_blank"
+            rel="noopener"
+          >
+            Planejar meu Evento
+          </a>
+        </div>
+      </section>
+
+      <!-- AVALIAÇÕES -->
+      <section id="avaliacoes" class="section-padding">
+        <div class="container">
+          <h2 class="section-title">Avaliações</h2>
+          <p class="section-sub">Quem visita, volta</p>
+
+          <div class="avaliacoes-grid">
+            <div class="t-tilt">
+              <div class="t-tilt-card avaliacao-card">
+                <div class="estrelas" aria-label="5 de 5 estrelas">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                </div>
+                <blockquote>
+                  "Melhor rodízio da região. Carnes no ponto certo e atendimento
+                  impecável do início ao fim."
+                </blockquote>
+                <p class="avaliacao-autor">Mariana S.</p>
+                <div class="t-tilt-glare"></div>
+              </div>
+            </div>
+
+            <div class="t-tilt">
+              <div class="t-tilt-card avaliacao-card">
+                <div class="estrelas" aria-label="5 de 5 estrelas">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                </div>
+                <blockquote>
+                  "Buffet variado, espaço amplo e ótimo para ir com a família
+                  toda. As crianças adoram."
+                </blockquote>
+                <p class="avaliacao-autor">Carlos E.</p>
+                <div class="t-tilt-glare"></div>
+              </div>
+            </div>
+
+            <div class="t-tilt">
+              <div class="t-tilt-card avaliacao-card">
+                <div class="estrelas" aria-label="5 de 5 estrelas">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.2l7.1-.6z"/></svg>
+                </div>
+                <blockquote>
+                  "A picanha é espetacular e o salão comporta grupos grandes sem
+                  aperto. Recomendo para eventos."
+                </blockquote>
+                <p class="avaliacao-autor">Fernanda R.</p>
+                <div class="t-tilt-glare"></div>
               </div>
             </div>
           </div>
@@ -256,6 +503,9 @@
         </p>
       </div>
     </footer>
-    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
   </body>
 </html>
