@@ -1103,6 +1103,18 @@ footer {
   font-size: 0.9rem;
   color: var(--muted);
 }
+.footer-credito {
+  margin-top: 6px;
+  font-size: 0.82rem;
+}
+.footer-credito a {
+  color: var(--gold);
+  font-weight: 600;
+  transition: color var(--duration-quick) var(--ease-smooth-out);
+}
+.footer-credito a:hover {
+  color: var(--gold-bright);
+}
 
 /* ===== RESPONSIVO ===== */
 @media (max-width: 1024px) {
